@@ -57,5 +57,39 @@
 </script>
 
 <style lang="scss" scoped>
+    .login-container {
+        background: orange;
+        height: 100vh;
+        display: flex;
+        align-items: center;
 
+        .login-content {
+            margin: 0 auto;
+
+            .login-info {
+                margin-bottom: 50px;
+            }
+        }
+
+        .form {
+            width: 500px;
+
+            .md-field {
+                background: azure;
+                border-radius: 3px;
+                padding-left: 5px;
+            }
+
+            .actions {
+                text-align: center;
+                .submit {
+                    background: greenyellow;
+                    border: 0;
+                    border-radius: 3px;
+                    padding: 10px 20px;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 </style>
