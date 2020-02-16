@@ -194,10 +194,141 @@
                 this.pageablePosts = pageOfItems;
             }
         }
-
     }
 </script>
 
 <style lang="scss">
+    .post-container {
+        background: #f3f3f3;
+        height: 100vh;
 
+        .post-content {
+            background: #f3f3f3;
+            padding: 20px;
+        }
+
+        .all-posts {
+            text-align: center;
+        }
+
+        .posts {
+            margin-top: 15px;
+        }
+
+        .post {
+            background: #fff;
+            width: 500px;
+            margin: 0 auto 15px;
+            padding: 12px;
+            border-radius: 3px;
+            border: 1px solid;
+
+            .title {
+                font-size: 16px;
+                font-weight: 500;
+                margin-bottom: 5px;
+            }
+            .description {
+                border-bottom: 1px solid #d3d3d3b5;
+                padding-bottom: 5px;
+            }
+            .claps {
+                display: flex;
+                align-items: center;
+                width: 50px;
+                margin: 5px 0;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+                .clap-count {
+                    font-size: 16px;
+                }
+            }
+            .actions {
+                border-top: 1px solid #d3d3d3b5;
+                text-align: center;
+                padding-top: 10px;
+
+                .clap-btn {
+                    width: 50px;
+                    cursor: pointer;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+
+        .paginate {
+            .pagination {
+                list-style: none;
+                display: flex;
+                justify-content: center;
+
+                li {
+                    cursor: pointer;
+
+                    a {
+                        padding: 0 10px;
+                        font-size: 16px;
+                    }
+
+                    &.first, &.last {
+                        display: none;
+                    }
+                    &.page-number {
+                        background: #fff;
+                        border: 1px solid lightgray;
+                        border-radius: 3px;
+                        margin: 0 3px;
+                        &.active {
+                            background: #dfd6d6d6;
+                        }
+                    }
+                    &.disabled {
+                        cursor: default;
+                    }
+                }
+            }
+        }
+    }
+
+    .btn {
+        border: 0;
+        color: #676464;
+        padding: 8px 16px;
+        border-radius: 3px;
+        cursor: pointer;
+        margin-right: 10px;
+
+        &__yellow {
+            background: #FFEB3B;
+        }
+        &__blue {
+            background: lightseagreen;
+            color: #ffffff;
+        }
+        &__red {
+            background: darkred;
+            color: #ffffff;
+        }
+        &__green {
+            background: #19bd1f;
+            color: #ffffff;
+            margin: 0 auto;
+            font-size: 15px;
+        }
+    }
+
+    .md-dialog.posts {
+        width: 400px;
+
+        .delete-confirm {
+            font-size: 18px;
+        }
+    }
 </style>
