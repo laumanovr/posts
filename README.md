@@ -1,4 +1,4 @@
-# yarn install
-# yarn add json-server
-# json-server info-data.json
-# yarn serve
+1. yarn install
+2. yarn add json-server
+3. json-server info-data.json
+4. yarn serve
