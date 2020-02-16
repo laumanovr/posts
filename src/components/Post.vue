@@ -121,7 +121,79 @@
             this.fetchPosts();
         },
 
+        methods: {
+            fetchPosts() {
+                postService.getAll().then(res => {
+                    this.posts = res.data.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    this.pageablePosts = this.posts;
+                }).catch(err => {
+                    console.log(err);
+                    this.$toaster.error('Что-то пошло не так', {timeout: 2000})
+                })
+            },
 
+            openModal(mode, post) {
+                this.mode = mode;
+                if (mode === 'create') {
+                    this.postObj.title = '';
+                    this.postObj.description = '';
+                    this.postObj.claps = 0;
+                } else {
+                    this.postObj.title = post.title;
+                    this.postObj.description = post.description;
+                    this.postObj.claps = post.claps;
+                    this.postObj.id = post.id;
+                    this.postObj.date = post.date;
+                }
+                this.showModal = true;
+            },
+
+            submitPost() {
+                if (this.mode === 'create') {
+                    this.postObj.date = new Date();
+                    this.postObj.id = this.posts.length ? this.posts[0].id + 1 : 1;
+                }
+                postService[this.mode](this.postObj).then(res => {
+                    this.showModal = false;
+                    this.fetchPosts();
+                    this.$toaster.success('Успешно', {timeout: 2000});
+                }).catch(err => {
+                    console.log(err);
+                    this.$toaster.error('Что-то пошло не так', {timeout: 2000})
+                })
+            },
+
+            deletePost() {
+                postService._delete(this.postObj.id).then(res => {
+                    this.showModal = false;
+                    this.fetchPosts();
+                    this.$toaster.success('Успешно удалено', {timeout: 2000});
+                }).catch(err => {
+                    console.log(err);
+                    this.$toaster.error('Что-то пошло не так', {timeout: 2000})
+                })
+            },
+
+            clapPost(post) {
+                this.postObj = Object.assign({}, post, {claps: post.claps + 1});
+                postService.update(this.postObj).then(res => {
+                    this.fetchPosts();
+                }).catch(err => {
+                    console.log(err);
+                    this.$toaster.error('Что-то пошло не так', {timeout: 2000})
+                })
+
+            },
+
+            logOut() {
+                window.localStorage.removeItem('user');
+                this.loggedUser = false;
+            },
+
+            onChangePage(pageOfItems) {
+                this.pageablePosts = pageOfItems;
+            }
+        }
 
     }
 </script>
