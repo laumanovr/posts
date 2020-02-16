@@ -23,5 +23,31 @@
 </script>
 
 <style lang="scss" scoped>
+    .header {
+        background: orange;
+        color: #fff;
+        padding: 14px;
 
+        .info {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 80px;
+
+            .login a {
+                color: #fff;
+            }
+        }
+        .user {
+            display: flex;
+
+            .logout {
+                cursor: pointer;
+            }
+
+            .name {
+                margin-right: 10px;
+                color: #000000b3;
+            }
+        }
+    }
 </style>
